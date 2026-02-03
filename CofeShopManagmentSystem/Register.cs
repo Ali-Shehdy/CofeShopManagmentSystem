@@ -71,7 +71,7 @@ namespace CofeShopManagmentSystem
 
                         string selectUsername = "SELECT * FROM Users WHERE username = @usern"; //
 
-                        using (SqlCommand checkUsername = new SqlCommand(selectUsername))
+                        using (SqlCommand checkUsername = new SqlCommand(selectUsername, connect))
                         {
                             checkUsername.Parameters.AddWithValue("@usern", register_username.Text.Trim());
                             SqlDataAdapter adapter = new SqlDataAdapter(checkUsername);
