@@ -69,11 +69,12 @@ namespace CofeShopManagmentSystem
                     {
                         connect.Open();
 
-                        string selectUsername = "SELECT * FROM Users WHERE username = @usern"; //
+                        string selectUsername = "SELECT * FROM users WHERE username = @usern"; //
 
                         using (SqlCommand checkUsername = new SqlCommand(selectUsername, connect))
                         {
                             checkUsername.Parameters.AddWithValue("@usern", register_username.Text.Trim());
+
                             SqlDataAdapter adapter = new SqlDataAdapter(checkUsername);
                             DataTable Table = new DataTable();
                             adapter.Fill(Table);
@@ -82,7 +83,8 @@ namespace CofeShopManagmentSystem
                             {
                                 string usern = register_username.Text.Substring(0,1).ToUpper() + register_username.Text.Substring(1);
                                 MessageBox.Show(usern + " is already exist", "Error Message" , MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            } else if (register_password.Text != register_cPassword.Text)
+                            } 
+                            else if (register_password.Text != register_cPassword.Text)
                             {
                                 MessageBox.Show("Password Does Not Match.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -102,7 +104,7 @@ namespace CofeShopManagmentSystem
                                 {
                                     cmd.Parameters.AddWithValue("@usern", register_username.Text.Trim());
                                     cmd.Parameters.AddWithValue("@pass", register_password.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@image", null);
+                                    cmd.Parameters.AddWithValue("@image", "");
                                     cmd.Parameters.AddWithValue("@role", "Cashier");
                                     cmd.Parameters.AddWithValue("@status", "Approval");
                                     cmd.Parameters.AddWithValue("@date", today);
@@ -110,6 +112,11 @@ namespace CofeShopManagmentSystem
                                     cmd.ExecuteNonQuery();
 
                                     MessageBox.Show("Account has been created successfully.", "Success Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                    // Show  form into login form
+                                    Form1 loginForm = new Form1();
+                                    loginForm.Show();
+                                    this.Hide();
                                 }
                             }
 
