@@ -70,6 +70,7 @@
             this.register_showPass.TabIndex = 16;
             this.register_showPass.Text = "Show Password";
             this.register_showPass.UseVisualStyleBackColor = true;
+            this.register_showPass.CheckedChanged += new System.EventHandler(this.register_showPass_CheckedChanged);
             // 
             // register_password
             // 
