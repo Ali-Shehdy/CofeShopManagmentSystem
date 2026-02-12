@@ -14,10 +14,20 @@ namespace CofeShopManagmentSystem
 {
     public partial class Register : Form
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\shehd\Documents\cafe.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True");
+        // Use DataDirectory so the MDF is resolved relative to the running app's folder.
+        private readonly string _connString =
+        @"Data Source=(LocalDB)\MSSQLLocalDB;
+AttachDbFilename=C:\Users\shehd\Documents\cafe.mdf;
+Integrated Security=True;Connect Timeout=30;";
+
+        // Add this field to hold the SqlConnection instance
+        private SqlConnection connect;
+
         public Register()
         {
             InitializeComponent();
+            // Initialize the connection object
+            connect = new SqlConnection(_connString);
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -55,8 +65,15 @@ namespace CofeShopManagmentSystem
                 return false;
             }
         }
+
+
         private void register_btn_Click(object sender, EventArgs e)
         {
+            var dataDir = AppDomain.CurrentDomain.GetData("DataDirectory")?.ToString();
+            var dbPath = System.IO.Path.Combine(dataDir ?? "", "cafe.mdf");
+
+            MessageBox.Show($"DataDirectory:\n{dataDir}\n\nDB Path:\n{dbPath}");
+
             if (emptyFields())
             {
                 MessageBox.Show("All Fields are required to be filled", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
