@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Login_registerBtn = new System.Windows.Forms.Button();
             this.Close = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Login_username = new System.Windows.Forms.TextBox();
-            this.Login_password = new System.Windows.Forms.TextBox();
+            this.login_username = new System.Windows.Forms.TextBox();
+            this.login_password = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Login_showPass = new System.Windows.Forms.CheckBox();
             this.Login_Btn = new System.Windows.Forms.Button();
-            this.Login_registerBtn = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +57,52 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(346, 522);
             this.panel1.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Uighur", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label6.Location = new System.Drawing.Point(54, 210);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(207, 34);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Coffeshop Managment";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CofeShopManagmentSystem.Properties.Resources.coffe_icon1;
+            this.pictureBox1.Location = new System.Drawing.Point(106, 107);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label5.Location = new System.Drawing.Point(89, 433);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(172, 25);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Create an account";
+            // 
+            // Login_registerBtn
+            // 
+            this.Login_registerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(99)))), ((int)(((byte)(102)))));
+            this.Login_registerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Login_registerBtn.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Login_registerBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.Login_registerBtn.Location = new System.Drawing.Point(12, 461);
+            this.Login_registerBtn.Name = "Login_registerBtn";
+            this.Login_registerBtn.Size = new System.Drawing.Size(319, 49);
+            this.Login_registerBtn.TabIndex = 9;
+            this.Login_registerBtn.Text = "REGISTER";
+            this.Login_registerBtn.UseVisualStyleBackColor = false;
+            this.Login_registerBtn.Click += new System.EventHandler(this.Login_registerBtn_Click);
             // 
             // Close
             // 
@@ -88,21 +134,24 @@
             this.label3.Size = new System.Drawing.Size(87, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "Username:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // Login_username
+            // login_username
             // 
-            this.Login_username.Location = new System.Drawing.Point(372, 178);
-            this.Login_username.Name = "Login_username";
-            this.Login_username.Size = new System.Drawing.Size(342, 26);
-            this.Login_username.TabIndex = 4;
+            this.login_username.Location = new System.Drawing.Point(372, 178);
+            this.login_username.Name = "login_username";
+            this.login_username.Size = new System.Drawing.Size(342, 26);
+            this.login_username.TabIndex = 4;
+            this.login_username.TextChanged += new System.EventHandler(this.Login_username_TextChanged);
             // 
-            // Login_password
+            // login_password
             // 
-            this.Login_password.Location = new System.Drawing.Point(372, 249);
-            this.Login_password.Name = "Login_password";
-            this.Login_password.PasswordChar = '*';
-            this.Login_password.Size = new System.Drawing.Size(342, 26);
-            this.Login_password.TabIndex = 6;
+            this.login_password.Location = new System.Drawing.Point(372, 249);
+            this.login_password.Name = "login_password";
+            this.login_password.PasswordChar = '*';
+            this.login_password.Size = new System.Drawing.Size(342, 26);
+            this.login_password.TabIndex = 6;
+            this.login_password.TextChanged += new System.EventHandler(this.Login_password_TextChanged);
             // 
             // label4
             // 
@@ -123,6 +172,7 @@
             this.Login_showPass.TabIndex = 7;
             this.Login_showPass.Text = "Show Password";
             this.Login_showPass.UseVisualStyleBackColor = true;
+            this.Login_showPass.CheckedChanged += new System.EventHandler(this.Login_showPass_CheckedChanged);
             // 
             // Login_Btn
             // 
@@ -135,54 +185,10 @@
             this.Login_Btn.Size = new System.Drawing.Size(148, 49);
             this.Login_Btn.TabIndex = 8;
             this.Login_Btn.Text = "LOG IN";
+            this.Login_Btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.Login_Btn.UseVisualStyleBackColor = false;
+            this.Login_Btn.UseWaitCursor = true;
             this.Login_Btn.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // Login_registerBtn
-            // 
-            this.Login_registerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(99)))), ((int)(((byte)(102)))));
-            this.Login_registerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Login_registerBtn.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Login_registerBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Login_registerBtn.Location = new System.Drawing.Point(12, 461);
-            this.Login_registerBtn.Name = "Login_registerBtn";
-            this.Login_registerBtn.Size = new System.Drawing.Size(319, 49);
-            this.Login_registerBtn.TabIndex = 9;
-            this.Login_registerBtn.Text = "REGISTER";
-            this.Login_registerBtn.UseVisualStyleBackColor = false;
-            this.Login_registerBtn.Click += new System.EventHandler(this.Login_registerBtn_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label5.Location = new System.Drawing.Point(89, 433);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(172, 25);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Create an account";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Uighur", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(54, 210);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(207, 34);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Coffeshop Managment";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::CofeShopManagmentSystem.Properties.Resources.coffe_icon1;
-            this.pictureBox1.Location = new System.Drawing.Point(106, 107);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -191,9 +197,9 @@
             this.ClientSize = new System.Drawing.Size(800, 522);
             this.Controls.Add(this.Login_Btn);
             this.Controls.Add(this.Login_showPass);
-            this.Controls.Add(this.Login_password);
+            this.Controls.Add(this.login_password);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.Login_username);
+            this.Controls.Add(this.login_username);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Close);
@@ -217,8 +223,8 @@
         private System.Windows.Forms.Label Close;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox Login_username;
-        private System.Windows.Forms.TextBox Login_password;
+        private System.Windows.Forms.TextBox login_username;
+        private System.Windows.Forms.TextBox login_password;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox Login_showPass;
         private System.Windows.Forms.Button Login_Btn;
