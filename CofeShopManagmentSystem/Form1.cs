@@ -14,7 +14,8 @@ namespace CofeShopManagmentSystem
 {
     public partial class Form1 : Form
     {
-        SqlConnection connect = new SqlConnection("@\"Data Source=(LocalDB)\\MSSQLLocalDB;\r\nAttachDbFilename=C:\\Users\\shehd\\Documents\\cafe.mdf;\r\nIntegrated Security=True;Connect Timeout=30;\"");
+        SqlConnection connect = new SqlConnection(
+            "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\shehd\\Documents\\cafe.mdf;Integrated Security=True;Connect Timeout=30;");
         public Form1()
         {
             InitializeComponent();
@@ -63,7 +64,13 @@ namespace CofeShopManagmentSystem
 
                             if (table.Rows.Count >= 1)
                             {
-                             MessageBox.Show("Login Successfuly!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Login Successfuly!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                                AdminMainForm adminForm = new AdminMainForm();
+                                adminForm.Show();
+
+                                this.Hide();
 
                             } else
                             {
