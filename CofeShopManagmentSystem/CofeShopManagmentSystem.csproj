@@ -125,5 +125,8 @@
     <None Include="Resources\coffe icon1.png" />
     <None Include="Resources\coffe icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="User_Directory\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

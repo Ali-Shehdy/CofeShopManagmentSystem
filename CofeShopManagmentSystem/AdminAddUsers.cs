@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace CofeShopManagmentSystem
 {
@@ -45,7 +46,8 @@ namespace CofeShopManagmentSystem
         public bool emptyFields()
         {
             if (adminAddUsers_addBtn.Text == "" || adminAddUsers_password.Text == ""
-                || adminAddUsers_role.Text == "" || adminAddUsers_status.Text == "")
+                || adminAddUsers_role.Text == "" || adminAddUsers_status.Text == ""
+                || adminAddUsers_imageView.Image == null)
             {
                 return true;
             }
@@ -74,33 +76,43 @@ namespace CofeShopManagmentSystem
                         {
                             checkUsern.Parameters.AddWithValue("@usern", adminAddUsers_username.Text.Trim());
 
-                            SqlDataAdapter adapter = new SqlDataAdapter(checkUsern);
-                            DataTable table = new DataTable();
-                            adapter.Fill(table);
+                            // Use ExecuteScalar to get the COUNT value instead of checking Rows.Count
+                            int existingCount = Convert.ToInt32(checkUsern.ExecuteScalar());
 
-                            if (table.Rows.Count >= 1)
+                            if (existingCount > 0)
                             {
                                 string usern = adminAddUsers_username.Text.Substring(0, 1).ToUpper() + adminAddUsers_username.Text.Substring(1);
                                 MessageBox.Show(usern + " is already Taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             else
                             {
-                                string insertData = "INSERT INTO users (username, password,profile_image role, status, date_reg)" +
-                                    " VALUES (@usern, @pass,@image, @role, @status, @date)";
+                                string insertData = "INSERT INTO users (username, password, profile_image, role, status, date_reg)" +
+                                    " VALUES (@usern, @pass, @image, @role, @status, @date)";
 
                                 DateTime today = DateTime.Today;
+
+                                string path = Path.Combine(@"C:\Users\shehd\Source\Repos\CofeShopManagmentSystem3\CofeShopManagmentSystem\User_Directory\"
+                                + adminAddUsers_username.Text.Trim() + ".jpg");
+
+                                string directory = Path.GetDirectoryName(path); 
+                                if(!Directory.Exists(directory))
+                                {
+                                    Directory.CreateDirectory(directory);
+                                }
+                                File.Copy(adminAddUsers_imageView.ImageLocation, path, true); 
 
                                 using (SqlCommand cmd = new SqlCommand(insertData, connect))
                                 {
                                     cmd.Parameters.AddWithValue("@usern", adminAddUsers_username.Text.Trim());
                                     cmd.Parameters.AddWithValue("@pass", adminAddUsers_password.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@image", "");
+                                    cmd.Parameters.AddWithValue("@image", path);
                                     cmd.Parameters.AddWithValue("@role", adminAddUsers_role.Text.Trim());
                                     cmd.Parameters.AddWithValue("@status", adminAddUsers_status.Text.Trim());
                                     cmd.Parameters.AddWithValue("@date", today);
 
                                     cmd.ExecuteNonQuery();
                                     MessageBox.Show("User Added Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    displayAddUsersData();
                                 }
                             }
                         }

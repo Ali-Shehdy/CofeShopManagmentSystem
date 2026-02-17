@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.adminAddUsers_clearBtn = new System.Windows.Forms.Button();
             this.adminAddUsers_deleteBtn = new System.Windows.Forms.Button();
@@ -226,14 +226,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(99)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(99)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(23, 64);
             this.dataGridView1.Name = "dataGridView1";
@@ -260,14 +260,15 @@
             this.panel3.Controls.Add(this.adminAddUsers_imageView);
             this.panel3.Location = new System.Drawing.Point(103, 38);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(157, 137);
+            this.panel3.Size = new System.Drawing.Size(160, 160);
             this.panel3.TabIndex = 14;
             // 
             // adminAddUsers_imageView
             // 
-            this.adminAddUsers_imageView.Location = new System.Drawing.Point(7, 8);
+            this.adminAddUsers_imageView.Location = new System.Drawing.Point(12, 13);
             this.adminAddUsers_imageView.Name = "adminAddUsers_imageView";
-            this.adminAddUsers_imageView.Size = new System.Drawing.Size(142, 122);
+            this.adminAddUsers_imageView.Size = new System.Drawing.Size(140, 130);
+            this.adminAddUsers_imageView.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.adminAddUsers_imageView.TabIndex = 0;
             this.adminAddUsers_imageView.TabStop = false;
             // 
@@ -277,7 +278,7 @@
             this.adminAddUsers_importBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.adminAddUsers_importBtn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adminAddUsers_importBtn.ForeColor = System.Drawing.Color.White;
-            this.adminAddUsers_importBtn.Location = new System.Drawing.Point(103, 182);
+            this.adminAddUsers_importBtn.Location = new System.Drawing.Point(105, 200);
             this.adminAddUsers_importBtn.Name = "adminAddUsers_importBtn";
             this.adminAddUsers_importBtn.Size = new System.Drawing.Size(157, 37);
             this.adminAddUsers_importBtn.TabIndex = 15;
@@ -299,6 +300,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.adminAddUsers_imageView)).EndInit();
             this.ResumeLayout(false);
 
