@@ -94,12 +94,12 @@ namespace CofeShopManagmentSystem
                                 string path = Path.Combine(@"C:\Users\shehd\Source\Repos\CofeShopManagmentSystem3\CofeShopManagmentSystem\User_Directory\"
                                 + adminAddUsers_username.Text.Trim() + ".jpg");
 
-                                string directory = Path.GetDirectoryName(path); 
-                                if(!Directory.Exists(directory))
+                                string directory = Path.GetDirectoryName(path);
+                                if (!Directory.Exists(directory))
                                 {
                                     Directory.CreateDirectory(directory);
                                 }
-                                File.Copy(adminAddUsers_imageView.ImageLocation, path, true); 
+                                File.Copy(adminAddUsers_imageView.ImageLocation, path, true);
 
                                 using (SqlCommand cmd = new SqlCommand(insertData, connect))
                                 {
@@ -155,6 +155,27 @@ namespace CofeShopManagmentSystem
         private void adminAddUsers_username_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            adminAddUsers_username.Text = row.Cells[1].Value.ToString();
+            adminAddUsers_password.Text = row.Cells[2].Value.ToString();
+            adminAddUsers_role.Text = row.Cells[3].Value.ToString();
+            adminAddUsers_status.Text = row.Cells[4].Value.ToString();
+
+            string imagePath = row.Cells[5].Value.ToString();
+
+            if (imagePath != null)
+            {
+                adminAddUsers_imageView.Image = Image.FromFile(imagePath);
+            }
+            else
+            {
+                adminAddUsers_imageView.Image = null;
+            }
         }
     }
 }
