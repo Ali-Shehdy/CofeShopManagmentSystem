@@ -118,9 +118,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assest\incomes.png" />
+    <None Include="Assest\wallet.png" />
+    <None Include="Assest\cashier-machine.png" />
     <Content Include="Assest\coffe icon.png" />
     <None Include="Assest\money.png" />
     <None Include="Assest\Customer 2.png" />
+    <None Include="Assest\customer %281%29.png" />
     <Content Include="Assest\Customer.png" />
     <None Include="Resources\coffe icon1.png" />
     <None Include="Resources\coffe icon.png" />

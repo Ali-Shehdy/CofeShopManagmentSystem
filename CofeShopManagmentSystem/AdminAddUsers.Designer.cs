@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.adminAddUsers_clearBtn = new System.Windows.Forms.Button();
             this.adminAddUsers_deleteBtn = new System.Windows.Forms.Button();
@@ -46,8 +46,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.adminAddUsers_imageView = new System.Windows.Forms.PictureBox();
             this.adminAddUsers_importBtn = new System.Windows.Forms.Button();
+            this.adminAddUsers_imageView = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -115,6 +115,7 @@
             this.adminAddUsers_updateBtn.TabIndex = 11;
             this.adminAddUsers_updateBtn.Text = "Update";
             this.adminAddUsers_updateBtn.UseVisualStyleBackColor = false;
+            this.adminAddUsers_updateBtn.Click += new System.EventHandler(this.adminAddUsers_updateBtn_Click);
             // 
             // adminAddUsers_addBtn
             // 
@@ -226,14 +227,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(99)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(99)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(23, 64);
             this.dataGridView1.Name = "dataGridView1";
@@ -264,15 +265,6 @@
             this.panel3.Size = new System.Drawing.Size(160, 160);
             this.panel3.TabIndex = 14;
             // 
-            // adminAddUsers_imageView
-            // 
-            this.adminAddUsers_imageView.Location = new System.Drawing.Point(12, 13);
-            this.adminAddUsers_imageView.Name = "adminAddUsers_imageView";
-            this.adminAddUsers_imageView.Size = new System.Drawing.Size(140, 130);
-            this.adminAddUsers_imageView.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.adminAddUsers_imageView.TabIndex = 0;
-            this.adminAddUsers_imageView.TabStop = false;
-            // 
             // adminAddUsers_importBtn
             // 
             this.adminAddUsers_importBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(99)))), ((int)(((byte)(102)))));
@@ -286,6 +278,15 @@
             this.adminAddUsers_importBtn.Text = "Import";
             this.adminAddUsers_importBtn.UseVisualStyleBackColor = false;
             this.adminAddUsers_importBtn.Click += new System.EventHandler(this.adminAddUsers_importBtn_Click);
+            // 
+            // adminAddUsers_imageView
+            // 
+            this.adminAddUsers_imageView.Location = new System.Drawing.Point(12, 13);
+            this.adminAddUsers_imageView.Name = "adminAddUsers_imageView";
+            this.adminAddUsers_imageView.Size = new System.Drawing.Size(140, 130);
+            this.adminAddUsers_imageView.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.adminAddUsers_imageView.TabIndex = 0;
+            this.adminAddUsers_imageView.TabStop = false;
             // 
             // AdminAddUsers
             // 

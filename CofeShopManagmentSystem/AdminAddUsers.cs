@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
-using System.Data.SqlClient;
-using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace CofeShopManagmentSystem
 {
@@ -152,30 +153,91 @@ namespace CofeShopManagmentSystem
             }
         }
 
-        private void adminAddUsers_username_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private int id = 0;
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
             DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            id = (int)row.Cells[0].Value;
             adminAddUsers_username.Text = row.Cells[1].Value.ToString();
             adminAddUsers_password.Text = row.Cells[2].Value.ToString();
             adminAddUsers_role.Text = row.Cells[3].Value.ToString();
             adminAddUsers_status.Text = row.Cells[4].Value.ToString();
 
-            string imagePath = row.Cells[5].Value.ToString();
+          
+            string imagePath = row.Cells[5].Value?.ToString();
 
-            if (imagePath != null)
+            adminAddUsers_imageView.Image?.Dispose();
+            adminAddUsers_imageView.Image = null;
+
+            if (!string.IsNullOrWhiteSpace(imagePath) && File.Exists(imagePath))
             {
-                adminAddUsers_imageView.Image = Image.FromFile(imagePath);
+                // avoids locking the file by using a memory copy
+                using (var fs = new FileStream(imagePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    adminAddUsers_imageView.Image = Image.FromStream(fs);
+                }
             }
             else
             {
-                adminAddUsers_imageView.Image = null;
+                // Optional: show a default placeholder image instead of null
+                // adminAddUsers_imageView.Image = Properties.Resources.defaultUser;
             }
+        }
+
+        private void adminAddUsers_updateBtn_Click(object sender, EventArgs e)
+        {
+            if(emptyFields())
+            {
+                MessageBox.Show("All fields are requierd to be filled", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to update Username" + adminAddUsers_username.Text.Trim()
+                    + "?", "Confirmation Message" , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    if (connect.State != ConnectionState.Open)
+                    {
+                        try
+                        {
+                            connect.Open();
+
+                            string updateDate = "Update users Set username = @usern, password = @pass, role = @role, status = @status WHERE id = @id ";
+
+                            using (SqlCommand cmd = new SqlCommand(updateDate, connect))
+                            {
+                                cmd.Parameters.AddWithValue("@usern", adminAddUsers_username.Text.Trim());
+                                cmd.Parameters.AddWithValue("@pass", adminAddUsers_password.Text.Trim());
+                                cmd.Parameters.AddWithValue("@role", adminAddUsers_role.Text.Trim());
+                                cmd.Parameters.AddWithValue("@status", adminAddUsers_status.Text.Trim());
+                                cmd.Parameters.AddWithValue("@id", id);
+
+                                cmd.ExecuteNonQuery();
+
+                                MessageBox.Show("Update successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                displayAddUsersData();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                        MessageBox.Show("Connection Faild" + ex , "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            connect.Close();
+                        }
+                    }
+                }
+                }
+        }
+
+        // Add this method to handle the TextChanged event for adminAddUsers_username
+        private void adminAddUsers_username_TextChanged(object sender, EventArgs e)
+        {
+            // You can leave this empty or add logic as needed
         }
     }
 }
