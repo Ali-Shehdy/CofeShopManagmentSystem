@@ -112,6 +112,7 @@ namespace CofeShopManagmentSystem
                                     cmd.Parameters.AddWithValue("@date", today);
 
                                     cmd.ExecuteNonQuery();
+                                    clearFields();
                                     MessageBox.Show("User Added Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     displayAddUsersData();
                                 }
@@ -215,6 +216,8 @@ namespace CofeShopManagmentSystem
                                 cmd.Parameters.AddWithValue("@id", id);
 
                                 cmd.ExecuteNonQuery();
+                                clearFields();
+
 
                                 MessageBox.Show("Update successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -238,6 +241,20 @@ namespace CofeShopManagmentSystem
         private void adminAddUsers_username_TextChanged(object sender, EventArgs e)
         {
             // You can leave this empty or add logic as needed
+        }
+
+        public void clearFields()
+        {
+            adminAddUsers_username.Text = "";
+            adminAddUsers_password.Text = "";
+            adminAddUsers_role.SelectedIndex = -1;
+            adminAddUsers_status.SelectedIndex = -1;
+            adminAddUsers_imageView.Image = null;
+
+        }
+        private void adminAddUsers_clearBtn_Click(object sender, EventArgs e)
+        {
+            clearFields();
         }
     }
 }
