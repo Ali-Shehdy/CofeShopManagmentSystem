@@ -166,7 +166,7 @@ namespace CofeShopManagmentSystem
             adminAddUsers_role.Text = row.Cells[3].Value.ToString();
             adminAddUsers_status.Text = row.Cells[4].Value.ToString();
 
-          
+
             string imagePath = row.Cells[5].Value?.ToString();
 
             adminAddUsers_imageView.Image?.Dispose();
@@ -189,14 +189,14 @@ namespace CofeShopManagmentSystem
 
         private void adminAddUsers_updateBtn_Click(object sender, EventArgs e)
         {
-            if(emptyFields())
+            if (emptyFields())
             {
                 MessageBox.Show("All fields are requierd to be filled", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to update Username" + adminAddUsers_username.Text.Trim()
-                    + "?", "Confirmation Message" , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    + "?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     if (connect.State != ConnectionState.Open)
@@ -226,7 +226,7 @@ namespace CofeShopManagmentSystem
                         }
                         catch (Exception ex)
                         {
-                        MessageBox.Show("Connection Faild" + ex , "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Connection Faild" + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         finally
                         {
@@ -234,7 +234,7 @@ namespace CofeShopManagmentSystem
                         }
                     }
                 }
-                }
+            }
         }
 
         // Add this method to handle the TextChanged event for adminAddUsers_username
@@ -255,6 +255,54 @@ namespace CofeShopManagmentSystem
         private void adminAddUsers_clearBtn_Click(object sender, EventArgs e)
         {
             clearFields();
+        }
+
+        private void adminAddUsers_deleteBtn_Click(object sender, EventArgs e)
+        {
+
+            if (emptyFields())
+            {
+                MessageBox.Show("All fields are requierd to be filled", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to DELETE Username" + adminAddUsers_username.Text.Trim()
+                    + "?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    if (connect.State != ConnectionState.Open)
+                    {
+                        try
+                        {
+                            connect.Open();
+
+                            string deleteDate = "DELETE FROM users WHERE id = @id ";
+
+                            using (SqlCommand cmd = new SqlCommand(deleteDate, connect))
+                            {
+
+                                cmd.Parameters.AddWithValue("@id", id);
+
+                                cmd.ExecuteNonQuery();
+                                clearFields();
+
+
+                                MessageBox.Show("Deleted successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                displayAddUsersData();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Connection Faild" + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            connect.Close();
+                        }
+                    }
+                }
+            }
         }
     }
 }
