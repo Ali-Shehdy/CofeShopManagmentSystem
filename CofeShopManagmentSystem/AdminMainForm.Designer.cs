@@ -40,13 +40,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.adminAddUsers1 = new CofeShopManagmentSystem.AdminAddUsers();
+            this.adminAddProducts1 = new CofeShopManagmentSystem.AdminAddProducts();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -194,6 +195,16 @@
             this.label2.Text = "Admin\'s Portal";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.adminAddProducts1);
+            this.panel3.Controls.Add(this.adminAddUsers1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(241, 45);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1259, 745);
+            this.panel3.TabIndex = 2;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CofeShopManagmentSystem.Properties.Resources.coffe_icon1;
@@ -203,21 +214,19 @@
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.adminAddUsers1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(241, 45);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1259, 745);
-            this.panel3.TabIndex = 2;
-            // 
             // adminAddUsers1
             // 
             this.adminAddUsers1.Location = new System.Drawing.Point(20, 21);
             this.adminAddUsers1.Name = "adminAddUsers1";
             this.adminAddUsers1.Size = new System.Drawing.Size(1217, 695);
             this.adminAddUsers1.TabIndex = 0;
+            // 
+            // adminAddProducts1
+            // 
+            this.adminAddProducts1.Location = new System.Drawing.Point(6, 3);
+            this.adminAddProducts1.Name = "adminAddProducts1";
+            this.adminAddProducts1.Size = new System.Drawing.Size(1251, 745);
+            this.adminAddProducts1.TabIndex = 1;
             // 
             // AdminMainForm
             // 
@@ -235,8 +244,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -258,5 +267,6 @@
         private System.Windows.Forms.Button logout_btn;
         private System.Windows.Forms.Panel panel3;
         private AdminAddUsers adminAddUsers1;
+        private AdminAddProducts adminAddProducts1;
     }
 }
